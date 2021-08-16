@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+          <div class="input-group mt-2 mb-2">
+            <input type="text"
+              class="form-control"
+              name="description"
+              placeholder="Enter task here"
+              ngModel required #description="ngModel">
+            <div class="input-group-append mx-2">
+              <button class="btn btn-primary" type="submit">ADD</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+  
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Done</th>
+              <!-- <th scope="col">Remove</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let todolist of todoLists">
+              <td>{{todolist.description}}</td>
+              <td> <input type="checkbox"
+                      [checked]="this.todolist.complete"
+                      (change)="onclick($event, todolist)">
+                </td>
+                <!-- <td>
+                  <button 
+                    class="btn btn-primary" 
+                    (click)="remove(todolist)">remove
+                  </button>
+                </td> -->
+            </tr>
+          </tbody>
+        </table>
+        <div class="complete" *ngIf="todoLists.length">
+        <p>Complete Item Is - {{checkedComplete}}</p>
+        <p>Incomplete Item Is - {{checkedInComplete}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
